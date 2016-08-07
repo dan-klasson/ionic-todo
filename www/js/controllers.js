@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngStorage'])
 
 .controller('DashCtrl', function($scope) {})
 
@@ -13,11 +13,19 @@ angular.module('starter.controllers', [])
   $scope.todo = Todos.get($stateParams.todoId);
 })
 
-.controller('TodoAddCtrl', function($scope, $stateParams) {
+.controller('TodoAddCtrl', function ($scope, StorageService, $state) {
   $scope.content = {};
 
+  $scope.todos = StorageService.getAll();
+
   $scope.add = function() {
-    console.log($scope.content.name)
+
+    var todo = $scope.content.name;
+
+    if(todo) {
+      StorageService.add(todo);
+      $state.go('tab.todos');
+    }
   };
 })
 

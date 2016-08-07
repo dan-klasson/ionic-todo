@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ['ngStorage'])
 
 .factory('Todos', function() {
   // Might use a resource here that returns a JSON array
@@ -27,6 +27,28 @@ angular.module('starter.services', [])
       }
       return null;
     }
+  };
+})
+
+.factory ('StorageService', function ($localStorage) {
+
+  $localStorage = $localStorage.$default({
+    todos: []
+  });
+
+  var _getAll = function () {
+    return $localStorage.todos;
+  };
+  var _add = function (todo) {
+    $localStorage.todos.push(todo);
+  }
+  var _remove = function (todo) {
+    $localStorage.todos.splice($localStorage.todos.indexOf(todo), 1);
+  }
+  return {
+    getAll: _getAll,
+    add: _add,
+    remove: _remove
   };
 })
 
