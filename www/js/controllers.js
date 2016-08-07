@@ -21,11 +21,14 @@ angular.module('starter.controllers', ['ngStorage'])
     var todo = $scope.content.name;
 
     if(todo) {
-      data = {
+
+      $scope.content.name = '';
+
+      StorageService.add({
         id: todo.length,
         name: todo
-      }
-      StorageService.add(data);
+      });
+
       $state.go('tab.todos');
     }
   };
