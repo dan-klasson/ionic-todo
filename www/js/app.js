@@ -60,6 +60,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('tab.remove', {
+    url: '/todos/remove',
+    views: {
+      'tab-todos': {
+        controller: 'TodoRemoveCtrl'
+      }
+    }
+  })
+
   .state('tab.todo-detail', {
     url: '/todos/:todoId',
     views: {

@@ -1,18 +1,24 @@
 <ion-view view-title="Todos">
 
- <ion-nav-buttons side="right">
-    <a href='#/tab/todos/add' class="button">Add Todo</a>
+  <ion-nav-buttons side="left">
+    <button class="button icon icon-left ion-checkmark"
+      ng-click="data.showDelete = !data.showDelete;"> Toggle</button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button icon" ng-click="add(todo)">Add Todo</button>
   </ion-nav-buttons>
 
   <ion-content>
-    <ion-list>
+    <ion-list show-delete="data.showDelete">
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="todo in todos" type="item-text-wrap" href="#/tab/todos/{{todo.id}}">
-        <h2>{{todo.name}}</h2>
+        Todo #{{todo.id}}
+        <h1>{{todo.name}} </h1>
+
+        <ion-delete-button class="ion-checkmark" ng-click="remove(todo)">
+        </ion-delete-button>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
-        <ion-option-button class="button-assertive" ng-click="remove(todo)">
-          Delete
-        </ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>

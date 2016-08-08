@@ -1,7 +1,12 @@
 <ion-view view-title="{{todo.name}}">
   <ion-content class="padding">
-    <p>
-      {{todo.name}}
-    </p>
+    <h1>{{todo.name}}</h1>
   </ion-content>
+
+  <ion-footer-bar align-title="left" class="bar-assertive">
+   <button class="button button-dark" ng-click="remove(todo)">
+     Mark as complete
+   </button>
+  </ion-footer-bar>
+
 </ion-view>

@@ -31,7 +31,10 @@ angular.module('starter.services', ['ngStorage'])
       return todos;
     },
     remove: function(todo) {
-      todos.splice(todos.indexOf(todo), 1);
+      StorageService.remove(todo);
+    },
+    add: function(todo) {
+      StorageService.add(todo);
     },
     get: function(todoId) {
       for (var i = 0; i < todos.length; i++) {
